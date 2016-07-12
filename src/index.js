@@ -21,9 +21,11 @@
 //     console.log('Server stared !');
 // });
 var server = require('./server');
+var routing = require('./routing');
 var promise = server();
 console.log('promise = ', promise);
 promise.then((srv) => {
-	console.log('My Server started!!!');
+    //console.log('server started!!!!', srv);
+    routing(srv);
 });
 //server;
