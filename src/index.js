@@ -23,9 +23,22 @@
 var server = require('./server');
 var routing = require('./routing');
 var promise = server();
+var _ = require('lodash');
+var fs = require('fs');
 console.log('promise = ', promise);
 promise.then((srv) => {
     //console.log('server started!!!!', srv);
     routing(srv);
+    generateRoutes(srv);
 });
+
+
+function generateRoutes(server) {
+    var jObj = JSON.parse(fs.readFileSync('./db-structure.json'));
+    if(_.has(jObj,'entities')){
+    	console.log('object ', jObj.entities);
+    }
+    // console.log('Reading files');
+    // console.log(JSON.parse(entities));
+}
 //server;
