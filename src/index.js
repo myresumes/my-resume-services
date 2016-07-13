@@ -37,8 +37,15 @@ promise.then((srv) => {
 
 function generateRoutes(srv) {
     return fs.readFileAsync('./db-structure.json').then((fData) => {
-        //console.log(JSON.parse(fData));
-        return JSON.parse(fData);
+        var jObj = JSON.parse(fData);
+        for (var key in jObj.entities) {
+            // console.log(jObj.entities[key]);
+            routing(srv, jObj.entities[key]);
+        }
+
+        return jObj;
+        // //console.log(JSON.parse(fData));
+        // return JSON.parse(fData);
     });
     // var jObj = JSON.parse(fs.readFileSync('./db-structure.json'));
     // if (_.has(jObj, 'entities')) {
