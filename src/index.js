@@ -22,22 +22,29 @@
 // });
 var server = require('./server');
 var routing = require('./routing');
+var Promise = require('bluebird');
 var promise = server();
 var _ = require('lodash');
-var fs = require('fs');
+var fs = Promise.promisifyAll(require("fs"));
 console.log('promise = ', promise);
 promise.then((srv) => {
     //console.log('server started!!!!', srv);
-    routing(srv);
-    generateRoutes(srv);
+    return generateRoutes(srv);
+}).then((routes) => {
+    console.log('routes ', routes);
 });
 
 
-function generateRoutes(server) {
-    var jObj = JSON.parse(fs.readFileSync('./db-structure.json'));
-    if(_.has(jObj,'entities')){
-    	console.log('object ', jObj.entities);
-    }
+function generateRoutes(srv) {
+    return fs.readFileAsync('./db-structure.json').then((fData) => {
+        //console.log(JSON.parse(fData));
+        return JSON.parse(fData);
+    });
+    // var jObj = JSON.parse(fs.readFileSync('./db-structure.json'));
+    // if (_.has(jObj, 'entities')) {
+    //     console.log('object ', jObj.entities);
+    //     //routing(srv, jObj.entities);
+    // }
     // console.log('Reading files');
     // console.log(JSON.parse(entities));
 }
