@@ -35,7 +35,6 @@ promise.then((srv) => {
     console.log('routes ', routes);
 });
 
-
 function generateRoutes(srv) {
     return fs.readFileAsync('./db-structure.json').then((fData) => {
         var jObj = JSON.parse(fData);
