@@ -18,6 +18,10 @@
   "homepage": "https://github.com/prateekpronoc/nodeapp#readme",
   "dependencies": {
     "bluebird": "^3.4.1",
-    "restify": "^4.1.1"
+    "bunyan": "^1.8.1",
+    "lodash": "^4.13.1",
+    "mysql": "^2.11.1",
+    "restify": "^4.1.1",
+    "sequelize": "^3.23.4"
   }
 }
