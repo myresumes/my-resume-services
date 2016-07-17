@@ -1,6 +1,6 @@
 'use strict'
 
-var restify = require("restify");
+var restify = require('restify');
 var Promise = require('bluebird');
 
 module.exports = function() {
@@ -23,4 +23,4 @@ module.exports = function() {
             return resolve(server);
         });
     });
-}
+};

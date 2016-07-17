@@ -1,15 +1,4 @@
-var restify = require('restify');
-var Sequelize = require('sequelize');
-var sequelize = new Sequelize('test', 'root', null);
-var db = {};
-var server = restify.createServer({
-    name: 'myapp',
-    version: '1.0.0'
-});
-server.use(restify.acceptParser(server.acceptable));
-server.use(restify.queryParser());
-server.use(restify.bodyParser());
-
+'use strict'
 // var restify = require('restify');
 
 // var server = restify.createServer({
@@ -28,7 +17,6 @@ server.use(restify.bodyParser());
 // server.listen(8080, function () {
 //   console.log('%s listening at %s', server.name, server.url);
 // });
-
 
 // var server = require('./server')().then(() => {
 //     console.log('Server stared !');
@@ -56,11 +44,7 @@ function generateRoutes(srv) {
             routing(srv, jObj.entities[key]);
         }
 
-
-        server.listen(8080, function() {
-            console.log('%s listening at %s', server.name, server.url);
-        });
-
+        return jObj;
         // //console.log(JSON.parse(fData));
         // return JSON.parse(fData);
     });

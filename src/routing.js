@@ -8,4 +8,5 @@ module.exports = function(server, entity) {
     }
 
     server.get('api/' + entity, getMethod);
+    
 }
