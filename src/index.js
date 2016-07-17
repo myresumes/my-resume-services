@@ -55,5 +55,5 @@ function generateRoutes(srv) {
     // console.log('Reading files');
     // console.log(JSON.parse(entities));
 }
-//server;
+
 
